@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>integration-alpine</title>
+  </head>
+  <body>
+    <div id="app">
+      <form
+        x-data
+        @submit.prevent="console.log($refs.pondRef.currentEntries)"
+        method="POST"
+      >
+        <label for="my-file">Documents</label>
+        <file-pond
+          x-ref="pondRef"
+          @changeentries="console.log($el.currentEntries)"
+        >
+          <input id="my-file" type="file" name="files" required multiple />
+        </file-pond>
+
+        <button type="submit">Sumbit</button>
+      </form>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
